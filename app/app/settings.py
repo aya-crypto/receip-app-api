@@ -9,10 +9,15 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
-# docker-compose run app sh -c "python manage.py test"
-# docker-compose run app sh -c "python manage.py test && flake8"
+# docker-compose run --rm app sh -c "python manage.py test"
+# docker-compose run --rm app sh -c "python manage.py test && flake8"
 # docker-compose run app sh -c "python manage.py startapp core"
 # docker-compose run app sh -c "python manage.py makemigrations core "
+# if  docker-compose run app sh -c "python manage.py createsuperuser"not run use,
+#winpty docker-compose run app sh -c "python manage.py createsuperuser"
+#docker-compose run --rm app sh -c "python manage.py startapp user"
+# rm remove container
+#ro run local server docker-compose up
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -40,7 +45,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',
     'core',
+    'user'
 ]
 
 MIDDLEWARE = [
